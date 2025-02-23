@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Happy Birthday</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Next Button Styling */
+        .next-button {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: none; /* Initially hidden */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 50px; /* Increased space below the cake */
+        }
+
+        .next-button:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 75, 43, 0.8);
+        }
+
+        /* Fade Out Effect */
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Balloons Animation */
+        .balloons {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            animation: floatUp 10s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Positioning container for button */
+        .button-container {
+            width: 100%;
+            position: relative;
+            margin-top: 400px; /* More space below cake */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="loader">
+                <button id="play">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <audio class="song" controls loop>
+        <source src="music.mp3">
+        Your browser isn't invited for super fun audio time.
+    </audio>
+
+    <canvas id="confetti"></canvas>
+
+    <div class="main">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-12 col-xl-6 mx-auto">
+                    <img src="img/banner.png" alt="">
+                </div>
+
+                <div class="col-12 text-center">
+                    <div id="name" class="area">Airah Baby</div>
+                </div>
+
+                <div class="col-12 text-center">
+                    <div class="type-wrap">
+                        <div id="typed-strings" class="typing">
+                            <h2>Happy Birthday <i id="nae">Airah Baby</i></h2>
+                            <h2>Have a wonderful day</h2>
+                            <h2>Filled with joy and happiness.</h2>
+                        </div>
+                        <span id="typed" style="white-space:pre;"></span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-xl-3 cake text-center">
+                    <img src="img/cake.gif" alt="">
+                </div>
+
+                <!-- Next Page Button (Initially Hidden) -->
+                <div class="col-12 text-center button-container">
+                    <button id="nextPageBtn" class="btn btn-primary next-button">Go to Next Page</button>
+                </div>
+            </div>
+        </div>
+
+        <img src="img/Balloon-Border.png" width="100%" class="balloon-border">
+    </div>
+
+    <!-- Balloons Animation -->
+    <div class="balloons">
+        <img src="img/balloon1.png" class="balloon" style="left: 10%; animation-duration: 6s;">
+        <img src="img/balloon2.png" class="balloon" style="left: 30%; animation-duration: 8s;">
+        <img src="img/balloon3.png" class="balloon" style="left: 50%; animation-duration: 7s;">
+        <img src="img/balloon4.png" class="balloon" style="left: 70%; animation-duration: 5s;">
+        <img src="img/balloon5.png" class="balloon" style="left: 90%; animation-duration: 9s;">
+    </div>
+
+    <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/typed.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        // Show "Next Page" button after 10 seconds
+        setTimeout(() => {
+            document.getElementById("nextPageBtn").style.display = "block";
+        }, 10000);
+
+        // Next Page Button Click Event
+        document.getElementById("nextPageBtn").addEventListener("click", function () {
+            document.body.classList.add("fade-out"); // Apply fade-out effect
+            setTimeout(function () {
+                window.location.href = "2.html"; // Change to your actual next page URL
+            }, 1000); // Wait for the fade-out effect to complete
+        });
+    </script>
+
+</body>
+
+</html>
